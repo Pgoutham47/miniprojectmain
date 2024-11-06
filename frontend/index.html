@@ -3,45 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CollegePredictor 2025</title>
+    <title>College Predictor 2025</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styles for the layout */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background: linear-gradient(90deg, #687e9b, #030303);
+            color: #ffffff;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ffeb3b;
+        }
+
+        /* Slider styles */
+        .slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            margin-top: 80px; /* Space for navbar */
+        }
+
+        .slide {
+            display: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100vh; /* Full height */
+            object-fit: cover; /* Cover the entire area */
+            border-radius: 10px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .prev-slide, .next-slide {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 100;
+        }
+
+        .prev-slide {
+            left: 10px;
+        }
+
+        .next-slide {
+            right: 10px;
+        }
+
+        /* Main content styles */
+        .main-content {
+            margin-top: 80px; /* Space for navbar */
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Search section styles */
+        .search-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .search-button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .search-button:hover {
+            background-color: #1557b0;
+        }
+
+        /* Results section styles */
+        .results-section {
+            margin-top: 20px;
+        }
+
+        .college-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .college-card:hover {
+            transform: scale(1.02);
+        }
+
+        /* Step styles */
+        .step {
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #1ac6e8;
+        }
+
+        .step-number {
+            font-weight: 700;
+            color: #ff5722;
+            margin-right: 5px;
+        }
+
+        /* Hide elements initially */
+        #predictorSection {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo">CollegePredictor 2025</div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#courses">Courses</a>
-                <a href="#predictor">Predictor</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
+        <div class="logo">College Predictor 2025</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
+    <div class="slider">
+        <div class="slide active">
+            <img src="./imag/1544511524phpnqsboZ.png" alt="Slide 1">
+        </div>
+        <div class="slide">
+            <img src="./imag/CMREC-Main.jpg" alt="Slide 2">
+        </div>
+        <div class="slide">
+            <img src="./imag/placeholder.jpg" alt="Slide 3">
+        </div>
+        <button class="prev-slide">&#10094;</button>
+        <button class="next-slide">&#10095;</button>
+    </div>
+
     <div class="main-content">
-        <div class="search-section">
+        <div class="search-section" style="text-align: center; padding: 20px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <h2 style="font-size: 24px; color: #333; margin-bottom: 20px;">Select Your Course</h2>
+            <div class="course-selection" style="display: flex; justify-content: center; gap: 20px;">
+                <button id="btech-card" class="course-card" style="padding: 15px 30px; font-size: 18px; background-color: #1a73e8; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s;">
+                    B.Tech
+                </button>
+                <button id="mtech-card" class="course-card" style="padding: 15px 30px; font-size: 18px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s;">
+                    M.Tech
+                </button>
+                <button id="mba-card" class="course-card" style="padding: 15px 30px; font-size: 18px; background-color: #dc3545; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s;">
+                    MBA
+                </button>
+            </div>
+        </div>
+        
+        <div class="search-section" id="examSelection" style="display: none; text-align: center; padding: 20px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-top: 20px;">
+            <h2 style="font-size: 24px; color: #333; margin-bottom: 20px;">Select Exam</h2>
+            <div class="exam-selection" style="display: flex; justify-content: center; gap: 20px;">
+                <button id="emcet-card" class="exam-card" style="padding: 15px 30px; font-size: 18px; background-color: #1a73e8; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s;">
+                    EAMCET
+                </button>
+                <button id="other-exam-card" class="exam-card" style="padding: 15px 30px; font-size: 18px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s;">
+                    Other Exams
+                </button>
+            </div>
+        </div>
+
+        <div class="search-section" id="predictorSection">
             <h2>Find Your Dream College</h2>
-            <form class="search-form">
+            <form id="predictorForm" class="search-form">
                 <div class="form-group">
-                    <label>Exam Status</label>
-                    <select id="examStatus">
-                        <option value="">Select Status</option>
+                    <label for="examStatus">Exam Status</label>
+                    <select id="examStatus" required>
+                        <option value="" disabled selected>Select Status</option>
                         <option value="completed">Completed</option>
                         <option value="not-completed">Not Completed</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Rank/Score</label>
-                    <input type="number" placeholder="Enter your rank">
+                <div class="form-group" id="rankGroup" style="display:none;">
+                    <label for="rank">Enter Your Rank:</label>
+                    <input type="number" id="rankInput" placeholder="Enter your rank">
+                </div>
+                <div class="form-group" id="collegeGroup" style="display:none;">
+                    <label for="collegeName">Enter College Name:</label>
+                    <select id="collegeName" required>
+                        <option value="" disabled selected>Select a college</option>
+                        <option value="A C E ENGINEERING COLLEGE (AUTONOMOUS)">A C E ENGINEERING COLLEGE (AUTONOMOUS)</option>
+                        <option value="AAR MAHAVEER ENGINEERING COLLEGE">AAR MAHAVEER ENGINEERING COLLEGE</option>
+                        <!-- Add more college options as needed -->
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label>Category</label>
-                    <select id="category">
-                        <option value="">Select Category</option>
+                    <label for="branch">Choose Branch:</label>
+                    <select id="branch" required>
+                        <option value="" disabled selected>Select a branch</option>
+                        <option value="Computer Science Engineering">Computer Science Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <!-- Add more branch options as needed -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select id="category" required>
+                        <option value="" disabled selected>Select a category</option>
                         <option value="ocB">OC Boys</option>
                         <option value="ocG">OC Girls</option>
                         <option value="bcaB">BC-A Boys</option>
@@ -52,75 +259,165 @@
                         <option value="scG">SC Girls</option>
                         <option value="stB">ST Boys</option>
                         <option value="stG">ST Girls</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Branch</label>
-                    <select id="branch">
-                        <option value="">Select Branch</option>
-                        <option value="cse">Computer Science</option>
-                        <option value="ece">Electronics & Communication</option>
-                        <option value="eee">Electrical & Electronics</option>
-                        <option value="mech">Mechanical</option>
-                        <option value="civil">Civil</option>
-                        <option value="it">Information Technology</option>
+                        <option value="egoB">EWS Boys</option>
+                        <option value="egoG">EWS Girls</option>
                     </select>
                 </div>
                 <button type="submit" class="search-button">Search Colleges</button>
             </form>
-        </div>
-
-        <div class="course-grid">
-            <div class="course-card">
-                <div class="course-image">
-                    <img src="https://example.com/path-to-engineering-image.jpg" alt="Engineering">
-                    <span class="coming-soon">Trending</span>
-                </div>
-                <div class="course-info">
-                    <div class="course-title">B.Tech Computer Science</div>
-                    <p>Explore the world of computing and technology</p>
-                    <div class="course-stats">
-                        <span><i class="fas fa-user-graduate"></i> 5000+ Students</span>
-                        <span><i class="fas fa-star"></i> 4.8/5</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div class="course-image">
-                    <img src="https://example.com/path-to-ai-image.jpg" alt="AI & ML">
-                    <span class="coming-soon">Coming Soon</span>
-                </div>
-                <div class="course-info">
-                    <div class="course-title">AI & Machine Learning</div>
-                    <p>Future of technology and innovation</p>
-                    <div class="course-stats">
-                        <span><i class="fas fa-user-graduate"></i> 3000+ Students</span>
-                        <span><i class="fas fa-star"></i> 4.9/5</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div class="course-image">
-                    <img src="https://example.com/path-to-cybersecurity-image.jpg" alt="Cybersecurity">
-                </div>
-                <div class="course-info">
-                    <div class="course-title">Cybersecurity</div>
-                    <p>Secure the digital world</p>
-                    <div class="course-stats">
-                        <span><i class="fas fa-user-graduate"></i> 2000+ Students</span>
-                        <span><i class="fas fa-star"></i> 4.7/5</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="results-section" id="searchResults">
-            <!-- Results will be dynamically populated here -->
+            <div id="searchResults" style="margin-top: 20px;"></div>
         </div>
     </div>
 
-    <script src="script1.js"></script>
+    <script>
+        // Slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = (i === index) ? 'block' : 'none';
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        document.querySelector('.next-slide').addEventListener('click', nextSlide);
+        document.querySelector('.prev-slide').addEventListener('click', prevSlide);
+
+        setInterval(nextSlide, 5000); // Auto slide every 5 seconds
+
+        // Course selection functionality
+        document.getElementById('btech-card').addEventListener('click', function() {
+            document.querySelector('.search-section').style.display = 'none'; // Hide course selection
+            document.getElementById('examSelection').style.display = 'block'; // Show exam selection
+        });
+
+        // Exam selection functionality
+        document.getElementById('emcet-card').addEventListener('click', function() {
+            document.getElementById('examSelection').style.display = 'none'; // Hide exam selection
+            document.getElementById('predictorSection').style.display = 'block'; // Show predictor section
+        });
+
+        // Handle exam status selection
+        document.getElementById('examStatus').addEventListener('change', function () {
+            const examStatus = this.value;
+            const rankGroup = document.getElementById('rankGroup');
+            const collegeGroup = document.getElementById('collegeGroup');
+
+            if (examStatus === 'completed') {
+                rankGroup.style.display = 'block';
+                collegeGroup.style.display = 'none';
+            } else if (examStatus === 'not-completed') {
+                rankGroup.style.display = 'none';
+                collegeGroup.style.display = 'block';
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('predictorForm').addEventListener('submit', async function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            const examStatus = document.getElementById('examStatus').value;
+            const rankInput = document.getElementById('rankInput').value;
+            const collegeName = document.getElementById('collegeName').value;
+            const branch = document.getElementById('branch').value;
+            const category = document.getElementById('category').value;
+
+            const searchResults = document.getElementById('searchResults');
+            searchResults.innerHTML = `<p>Loading...</p>`; // Show loading message
+
+            try {
+                let response;
+                if (examStatus === 'completed') {
+                    response = await fetch(`/colleges-by-rank?rank=${rankInput}&category=${category}`);
+                } else {
+                    response = await fetch(`/colleges-by-branch?name=${encodeURIComponent(collegeName)}&branch=${encodeURIComponent(branch)}&category=${encodeURIComponent(category)}`);
+                }
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    displayResults(data, examStatus);
+                } else {
+                    searchResults.innerHTML = `<p>${data.message}</p>`;
+                }
+            } catch (error) {
+                console.error("Error fetching results:", error);
+                searchResults.innerHTML = `<p>Error fetching results. Please try again later.</p>`;
+            }
+        });
+
+        function displayResults(data, examStatus) {
+            const searchResults = document.getElementById('searchResults');
+            searchResults.innerHTML = ''; // Clear previous results
+
+            if (examStatus === 'completed') {
+                if (data.length > 0) {
+                    data.forEach(college => {
+                        const collegeCard = document.createElement('div');
+                        collegeCard.className = 'college-card';
+                        collegeCard.innerHTML = `
+                            <h3>${college.name}</h3>
+                            <p>Branch: ${college.branch || 'N/A'}</p>
+                            <p>Cutoff Rank: ${college[category] ||                            'N/A'}</p>
+                        `;
+                        searchResults.appendChild(collegeCard);
+                    });
+                } else {
+                    searchResults.innerHTML = `<p>No colleges found for the given rank and category.</p>`;
+                }
+            } else {
+                if (data.categoryValue) {
+                    searchResults.innerHTML = `<p>Cutoff Rank for ${data.name}: ${data.categoryValue}</p>`;
+                } else {
+                    searchResults.innerHTML = `<p>College not found or category data missing.</p>`;
+                }
+            }
+        }
+
+    // Add hover effect for buttons
+    const buttons = document.querySelectorAll('.course-card, .exam-card');
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+            button.style.backgroundColor = '#1557b0'; // Darker shade on hover
+        });
+        button.addEventListener('mouseleave', () => {
+            if (button.id === 'btech-card' || button.id === 'emcet-card') {
+                button.style.backgroundColor = '#1a73e8'; // Original color
+            } else {
+                button.style.backgroundColor = '#28a745'; // Original color
+            }
+        });
+    });
+    document.getElementById('examStatus').addEventListener('change', function () {
+    const examStatus = this.value;
+    const rankGroup = document.getElementById('rankGroup');
+    const collegeGroup = document.getElementById('collegeGroup');
+    const searchButton = document.getElementById('search-button');
+
+    if (examStatus === 'completed') {
+        rankGroup.style.display = 'block';
+        collegeGroup.style.display = 'none';
+        searchButton.textContent = 'Search for Colleges'; // Search for colleges when exam is completed
+    } else if (examStatus === 'not-completed') {
+        rankGroup.style.display = 'none';
+        collegeGroup.style.display = 'block';
+        searchButton.textContent = 'Get Cutoff Rank'; // Get cutoff rank when exam is not completed
+    }
+});
+
+// Handle form submission
+
+    </script>
 </body>
 </html>
