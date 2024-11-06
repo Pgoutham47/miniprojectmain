@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollegePredictor 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">CollegePredictor 2025</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#predictor">Predictor</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="search-section">
+            <h2>Find Your Dream College</h2>
+            <form class="search-form">
+                <div class="form-group">
+                    <label>Exam Status</label>
+                    <select id="examStatus">
+                        <option value="">Select Status</option>
+                        <option value="completed">Completed</option>
+                        <option value="not-completed">Not Completed</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Rank/Score</label>
+                    <input type="number" placeholder="Enter your rank">
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="">Select Category</option>
+                        <option value="ocB">OC Boys</option>
+                        <option value="ocG">OC Girls</option>
+                        <option value="bcaB">BC-A Boys</option>
+                        <option value="bcaG">BC-A Girls</option>
+                        <option value="bcbB">BC-B Boys</option>
+                        <option value="bcbG">BC-B Girls</option>
+                        <option value="scB">SC Boys</option>
+                        <option value="scG">SC Girls</option>
+                        <option value="stB">ST Boys</option>
+                        <option value="stG">ST Girls</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Branch</label>
+                    <select id="branch">
+                        <option value="">Select Branch</option>
+                        <option value="cse">Computer Science</option>
+                        <option value="ece">Electronics & Communication</option>
+                        <option value="eee">Electrical & Electronics</option>
+                        <option value="mech">Mechanical</option>
+                        <option value="civil">Civil</option>
+                        <option value="it">Information Technology</option>
+                    </select>
+                </div>
+                <button type="submit" class="search-button">Search Colleges</button>
+            </form>
+        </div>
+
+        <div class="course-grid">
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://example.com/path-to-engineering-image.jpg" alt="Engineering">
+                    <span class="coming-soon">Trending</span>
+                </div>
+                <div class="course-info">
+                    <div class="course-title">B.Tech Computer Science</div>
+                    <p>Explore the world of computing and technology</p>
+                    <div class="course-stats">
+                        <span><i class="fas fa-user-graduate"></i> 5000+ Students</span>
+                        <span><i class="fas fa-star"></i> 4.8/5</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://example.com/path-to-ai-image.jpg" alt="AI & ML">
+                    <span class="coming-soon">Coming Soon</span>
+                </div>
+                <div class="course-info">
+                    <div class="course-title">AI & Machine Learning</div>
+                    <p>Future of technology and innovation</p>
+                    <div class="course-stats">
+                        <span><i class="fas fa-user-graduate"></i> 3000+ Students</span>
+                        <span><i class="fas fa-star"></i> 4.9/5</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image">
+                    <img src="https://example.com/path-to-cybersecurity-image.jpg" alt="Cybersecurity">
+                </div>
+                <div class="course-info">
+                    <div class="course-title">Cybersecurity</div>
+                    <p>Secure the digital world</p>
+                    <div class="course-stats">
+                        <span><i class="fas fa-user-graduate"></i> 2000+ Students</span>
+                        <span><i class="fas fa-star"></i> 4.7/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-section" id="searchResults">
+            <!-- Results will be dynamically populated here -->
+        </div>
+    </div>
+
+    <script src="script1.js"></script>
+</body>
+</html>
