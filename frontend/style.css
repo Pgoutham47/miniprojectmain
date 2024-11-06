@@ -1,0 +1,164 @@
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+.navbar {
+    background-color: #004d40;
+    color: #ffffff;
+    padding: 20px 20px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+.sidebar {
+    background-color: #f8f8f8;
+    width: 200px;
+    padding-top: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    color: #004d40;
+    font-size: 1rem;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.step-number {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #004d40;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.step.completed .step-number {
+    background-color: #4caf50;
+}
+
+.step.completed::after {
+    content: "✓";
+    position: absolute;
+    left: 6px;
+    font-size: 14px;
+}
+
+
+.main-content {
+    padding: 100px 20px 20px 240px;
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.course-card-container,
+.exam-card-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.course-card,
+.exam-card {
+    background-color: #ffffff;
+    width: 150px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.course-card img,
+.exam-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.course-card p,
+.exam-card p {
+    color: #333;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.course-card:hover,
+.exam-card:hover {
+    transform: scale(1.05);
+}
+.table-container {
+    margin-left: 250px;
+    padding: 20px;
+  }
+  
+  .filter-bar {
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    width: 200px;
+    display: none; 
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #004d40;
+    color: white;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
